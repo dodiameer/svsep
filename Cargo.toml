@@ -1,7 +1,12 @@
 [package]
 name = "svsep"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2018"
+authors = ["Mohammed Ali Agha <mtxshiftg@gmail.com>"]
+description = "A command-line utility to separate Svelte files into 3 separate .html, .css, and .js files"
+license = "MIT"
+repository = "https://github.com/dodiameer/svsep"
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
