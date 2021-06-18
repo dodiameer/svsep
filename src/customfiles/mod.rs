@@ -1,10 +1,11 @@
 use crate::fileops::FileOperations;
-use std::error::Error;
+// use std::error::Error;
 use std::path::PathBuf;
+use anyhow::Result;
 
 pub trait CustomFile {
   fn new(file_content: &String, file_path: &PathBuf) -> Self;
-  fn write(&self) -> Result<(), Box<dyn Error>>;
+  fn write(&self) -> Result<()>;
 }
 
 pub struct ScriptFile {
@@ -21,7 +22,7 @@ impl CustomFile for ScriptFile {
   }
    fn write(
     &self,
-  ) -> std::result::Result<(), std::boxed::Box<(dyn std::error::Error + 'static)>> {
+  ) -> Result<()> {
     FileOperations::write_file(&self.svelte_file, ".js", &self.content)
   }
 }
@@ -40,7 +41,7 @@ impl CustomFile for StyleFile {
   }
    fn write(
     &self,
-  ) -> std::result::Result<(), std::boxed::Box<(dyn std::error::Error + 'static)>> {
+  ) -> Result<()> {
     FileOperations::write_file(&self.svelte_file, ".css", &self.content)
   }
 }
@@ -59,7 +60,7 @@ impl CustomFile for MarkupFile {
   }
    fn write(
     &self,
-  ) -> std::result::Result<(), std::boxed::Box<(dyn std::error::Error + 'static)>> {
+  ) -> Result<()> {
     FileOperations::write_file(&self.svelte_file, ".html", &self.content)
   }
 }

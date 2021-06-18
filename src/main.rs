@@ -1,8 +1,8 @@
 mod fileops;
 mod customfiles;
-use std::error::Error;
 use std::path::PathBuf;
 use structopt::StructOpt;
+use anyhow::Result;
 use crate::fileops::FileOperations;
 use crate::customfiles::{ScriptFile, MarkupFile, StyleFile, CustomFile}; // Custom file trait required - don't remove
 
@@ -11,7 +11,7 @@ struct InputArgs {
     file: PathBuf,
 }
 
-fn main() -> Result<(), Box<dyn Error>> {
+fn main() -> Result<()> {
     let args = InputArgs::from_args();
     let svelte_file = FileOperations::read_to_string(&args.file)?;
     let script_file = ScriptFile::new(&svelte_file, &args.file);
